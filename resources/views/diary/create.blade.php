@@ -4,7 +4,7 @@
 <h2 class="mb-3">日記作成</h2>
 {!! Form::open(['route' => 'diary.store']) !!}
   <div class="form-group">
-    {!! Form::input('date', 'writing_time', ['class' => 'form-control']) !!}
+    {!! Form::input('date', 'writing_time', null, ['class' => 'form-control']) !!}
   </div>
   <div class="form-group">
     <input type="text" class="form-control" placeholder="日記内容">
