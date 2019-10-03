@@ -12,16 +12,15 @@
       <th>title</th>
       <th>content</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
-  @foreach($diarys as $diary)
+  @foreach($diaries as $diary)
     <tr>
       <td class="align-middle">{{ $diary->writing_time }}</td>
-      <td class="align-middle">{{ $dairy->title }}</td>
+      <td class="align-middle">{{ $diary->title }}</td>
       <td class="align-middle">{{ $diary->contents }}</td>
-      <td class="btn btn-primary"><a class="btn" href=""><i class="fa fa-book"></i></a></td>
+      <td class="btn btn-primary"><a class="btn" href="diary/{{ $diary->id }}"><i class="fa fa-book"></i></a></td>
     </tr>
   @endforeach
   </tbody>
