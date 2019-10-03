@@ -16,14 +16,14 @@
     </tr>
   </thead>
   <tbody>
-
-      <tr>
-        <td class="align-middle">2019/10/02</td>
-        <td class="align-middle">今日の日記</td>
-        <td class="align-middle">テスト</td>
-        <td class="col-xs-2"><a class="btn" href=""><i class="fa fa-book"></i></a></td>
-      </tr>
-
+  @foreach($diarys as $diary)
+    <tr>
+      <td class="align-middle">{{ $diary->writing_time }}</td>
+      <td class="align-middle">{{ $dairy->title }}</td>
+      <td class="align-middle">{{ $diary->contents }}</td>
+      <td class="btn btn-primary"><a class="btn" href=""><i class="fa fa-book"></i></a></td>
+    </tr>
+  @endforeach
   </tbody>
 </table>
 
