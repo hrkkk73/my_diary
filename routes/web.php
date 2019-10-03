@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('diary', 'DiaryController');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('diary', ['as' => 'diary.index', 'uses' => 'DiaryController@index']);
 Route::get('diary/create', ['as' => 'diary.create', 'uses' => 'DiaryController@create']);
-// Route::get('diary', 'DiaryController@index');
+Route::post('diary/store', ['as' => 'diary.store', 'uses' => 'DiaryController@store']);
+Route::get('diary/{id}', ['as' => 'diary.show', 'uses' => 'DiaryController@show']);
 
 
