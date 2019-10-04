@@ -23,10 +23,10 @@
     </div>
   </div>
   <div class="btn-bottom-wrapper">
-    <a class="btn btn-edit" href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+    <a class="btn btn-edit" href="{{ route('diary.edit', $diaries->id) }}"><i class="fas fa-pencil-alt"></i></i></a>
     <div class="btn-delete">
-      {!! Form::open() !!}
-        <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>
+      {!! Form::open(['route' => ['diary.user.delete', $diaries->id], 'method' => 'DELETE']) !!}
+        <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></i></button>
       {!! Form::close() !!}
     </div>
   </div>
