@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Diary extends Model
 {
-    protected $fillable = ['user_id', 'title', 'contents'];
+    protected $fillable = ['user_id', 'title', 'contents', 'writing_time'];
 
     public function getByUserId($id)
     {
