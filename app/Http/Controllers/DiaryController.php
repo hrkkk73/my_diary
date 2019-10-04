@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Diary;
 use Auth;
 
@@ -21,10 +22,12 @@ class DiaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $diarys = $this->diary->getByUserId(Auth::id());
-        return view('diary.index', compact('diarys'));
+        $inputs = $request->all();
+        $userId = Auth::id();
+        $diaries = $this->diary->getByUserId($userId);
+        return view('diary.index', compact('diaries'));
     }
 
     /**
@@ -47,9 +50,8 @@ class DiaryController extends Controller
     {
         $input = $request->all();
         $input['user_id'] = Auth::id();
-        dd($request->all());
         $this->diary->fill($input)->save();
-        return redirect()->route('diary');
+        return redirect()->route('diary.index');
     }
 
     /**
@@ -60,7 +62,8 @@ class DiaryController extends Controller
      */
     public function show($id)
     {
-        //
+        $diaries = $this->diary->find($id);
+        return view('diary.show', compact('diaries'));
     }
 
     /**
