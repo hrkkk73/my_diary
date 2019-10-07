@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Diary;
 use Auth;
 
@@ -24,9 +23,8 @@ class DiaryController extends Controller
      */
     public function index(Request $request)
     {
-        $inputs = $request->all();
-        $userId = Auth::id();
-        $diaries = $this->diary->getByUserId($userId);
+        $searchMonth = $request->input('search-month');
+        $diaries = $this->diary->getDiaryList(Auth::id(), $searchMonth);
         return view('diary.index', compact('diaries'));
     }
 
@@ -89,7 +87,7 @@ class DiaryController extends Controller
     {
         $input = $request->all();
         $this->diary->find($id)->fill($input)->save();
-        return redirect()->route('diary');
+        return redirect()->route('diary.index');
     }
 
     /**
