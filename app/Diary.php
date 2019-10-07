@@ -6,10 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Diary extends Model
 {
-    protected $fillable = ['user_id', 'title', 'contents', 'writing_time'];
+    protected $fillable = [
+        'user_id',
+        'title',
+        'contents',
+        'writing_time'
+    ];
 
-    public function getByUserId($id)
+    public function scopeGetByUserId($query, $id)
     {
-        return $this->where('user_id', $id)->get();
+        return $query->where('user_id', $id);
+    }
+
+    public function scopeGetBySearchMonth($query, $searchMonth)
+    {
+        return $query->where('writing_time', 'LIKE', "$searchMonth%");
+    }
+
+    public function getDiaryList($id, $searchMonth)
+    {
+        return $this->getByUserId($id)
+                    ->getBySearchMonth($searchMonth)
+                    ->get();
     }
 }
