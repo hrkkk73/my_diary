@@ -27,7 +27,11 @@
         <td class="align-middle">{{ $diary->writing_time->format('Y年m月d日') }}</td>
         <td class="align-middle">{{ mb_strimwidth($diary->title, 0, 80, '...', 'UTF-8') }}</td>
         <td class="align-middle">{{ mb_strimwidth($diary->contents, 0, 80, '...', 'UTF-8') }}</td>
-        <td class="btn btn-primary"><a class="btn" href="diary/{{ $diary->id }}">詳細</a></td>
+        <td class="align-middle">
+          <div class="btn-conteiner">
+            <a class="btn" href="diary/{{ $diary->id }}">詳細</a>
+          </div>
+        </td>
       </tr>
     @endforeach
     </tbody>
