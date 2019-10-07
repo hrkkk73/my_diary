@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\DiaryRequest;
 use App\Diary;
 use Auth;
 
@@ -44,7 +45,7 @@ class DiaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiaryRequest $request)
     {
         $input = $request->all();
         $input['user_id'] = Auth::id();
@@ -83,7 +84,7 @@ class DiaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DiaryRequest $request, $id)
     {
         $input = $request->all();
         $this->diary->find($id)->fill($input)->save();
