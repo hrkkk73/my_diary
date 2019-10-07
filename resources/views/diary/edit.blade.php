@@ -7,7 +7,7 @@
     {!! Form::open(['route' => ['diary.update', $diary->id], 'method' => 'PUT']) !!}
       {!! Form::input('hidden', 'user_id', Auth::id(), ['class' => 'form-control']) !!}
       <div class="form-group">
-        {!! Form::input('date', 'writing_time', $diary->writing_time, ['class' => 'form-control']) !!}
+        {!! Form::input('date', 'writing_time', $diary->writing_time->format('Y年m月d日'), ['class' => 'form-control']) !!}
       </div>
       <div class="form-group">
         {!! Form::input('text', 'title', $diary->title, ['class' => 'form-control', 'placeholder' => '日記内容']) !!}
