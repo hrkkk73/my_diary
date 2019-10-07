@@ -1,0 +1,8 @@
+.btn {
+  color: #fff;
+}
+
+.btn.btn-primary {
+  float: right;
+  margin-right: 30px;
+}
