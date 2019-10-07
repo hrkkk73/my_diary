@@ -1,8 +1,16 @@
 .btn {
   color: #fff;
+  margin: 10px;
 }
 
 .btn.btn-primary {
   float: right;
   margin-right: 30px;
+}
+
+.btn-conteiner {
+  background-color: dodgerblue;
+  width: 80px;
+  float: right;
+  border-radius: 10px;
 }
