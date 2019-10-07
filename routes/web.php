@@ -23,6 +23,7 @@ Route::get('diary/create', ['as' => 'diary.create', 'uses' => 'DiaryController@c
 Route::post('diary/store', ['as' => 'diary.store', 'uses' => 'DiaryController@store']);
 Route::get('diary/{id}', ['as' => 'diary.show', 'uses' => 'DiaryController@show']);
 Route::get('diary/{id}/edit', ['as' => 'diary.edit', 'uses' => 'DiaryController@edit']);
+Route::put('diary/{id}/user', ['as' => 'diary.update', 'uses' => 'DiaryController@update']);
 Route::delete('diary/{id}/user', ['as' => 'diary.user.delete', 'uses' => 'DiaryController@destroy']);
 
 
