@@ -99,6 +99,6 @@ class DiaryController extends Controller
     public function destroy($id)
     {
         $this->diary->find($id)->delete();
-        return redirect()->route('diary');
+        return redirect()->route('diary.index');
     }
 }
