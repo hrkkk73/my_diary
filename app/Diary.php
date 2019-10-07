@@ -13,6 +13,10 @@ class Diary extends Model
         'writing_time'
     ];
 
+    protected $dates = [
+        'writing_time',
+    ];
+
     public function scopeGetByUserId($query, $id)
     {
         return $query->where('user_id', $id);
@@ -27,6 +31,7 @@ class Diary extends Model
     {
         return $this->getByUserId($id)
                     ->getBySearchMonth($searchMonth)
+                    ->orderBy('writing_time', 'desc')
                     ->get();
     }
 }
