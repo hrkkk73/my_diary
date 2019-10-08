@@ -7,7 +7,7 @@
     {!! Form::open(['route' => ['diary.update', $diary->id], 'method' => 'PUT']) !!}
       {!! Form::input('hidden', 'user_id', Auth::id(), ['class' => 'form-control']) !!}
       <div class="form-group @if(!empty($errors->first('writing_time'))) has-error @endif">
-        {!! Form::input('date', 'writing_time', $diary->writing_time->format('Y年m月d日'), ['class' => 'form-control']) !!}
+        {!! Form::input('date', 'writing_time', $diary->writing_time->format('Y-m-d'), ['class' => 'form-control']) !!}
         <span class="help-block">{{ $errors->first('writing_time') }}</span>
       </div>
       <div class="form-group @if(!empty($errors->first('title'))) has-error @endif">
