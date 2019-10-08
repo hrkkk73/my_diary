@@ -5,13 +5,13 @@
 <div class="main-wrap">
   <div class="container">
       <div class="form-group">Date
-        <p class="form-control">{{ $diaries->writing_time->format('Y年m月d日') }}</p>
+        <p>{{ $diaries->writing_time->format('Y年m月d日') }}</p>
       </div>
       <div class="form-group">Title
-        <p class="form-control">{{ $diaries->title }}</p>
+        <p>{{ $diaries->title }}</p>
       </div>
       <div class="form-group">Content
-        <p class="form-control">{{ $diaries->contents }}</p>
+        <p>{{ $diaries->contents }}</p>
       </div>
       <div class="form-inline float-right">
         <a class="mr-2 btn btn-success" href="{{ route('diary.edit', $diaries->id) }}">編集</a>
