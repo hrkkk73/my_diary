@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('diary.index');
+    if (Auth::check()) {
+        return redirect()->route('diary.index');
+    } else {
+        return redirect()->to('login');
+    }
 });
 
 Auth::routes();
