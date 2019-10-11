@@ -17,59 +17,40 @@
 
 ### 環境構築手順
 
-1. Laradockをクローンし、 `.env` を作成。  
+1. laradock直下にて、下記コマンド実行  
+    - ` docker-compose build workspace mysql apache2 `  
+    - ` docker-compose up workspace apache2 mysql `
 
-```shell
-git clone https://github.com/laradock/laradock.git
-cd my_diary
-cp env-example .env
-```
+2. DBの作成  
+    
 
-2. Laradockの `.env` の設定を以下のように変更。(laradock/.env)  
+### Laravelの初期設定
 
+1. diaryApp直下にて、下記コマンドの実行  
+    - ` composer install `
 
-```text
-DATA_PATH_HOST=~/.laradock-diaryApp/data
+2. .envの編集  
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=diary_app
+    DB_USERNAME=root
+    DB_PASSWORD=root
+    ```
 
-# 中略
+3. key:generate  
+    以下を実行  
 
-MYSQL_VERSION=5.7
-```
+    ```shell
+    php artisan key:generate
+    ```
 
-3. `mysql/Dockerfile` の設定を `5.7` 用に変更。(laradock/mysql/Dockerfile)  
+4. migrateとseed  
+    以下を実行  
 
+    ```shell
+    php artisan migrate --seed
+    ```
 
-```text
-ARG MYSQL_VERSION=5.7
-```
-
-4. Apacheの設定ファイルの記述を以下のように変更。(laradock/apache2/sites/default.apache.conf)  ​
-
-```text
-<VirtualHost *:80>
-  ServerName localhost
-  DocumentRoot /var/www/diaryApp/public/
-  Options Indexes FollowSymLinks
-
-  <Directory "/var/www/diaryApp/public">
-    AllowOverride All
-    <IfVersion < 2.4>
-      Allow from all
-    </IfVersion>
-    <IfVersion >= 2.4>
-      Require all granted
-    </IfVersion>
-  </Directory>
-
-</VirtualHost>
-```​
-
-5. buildとup  
-
-```shell
-docker-compose up -d --build workspace mysql apache2
-```
-
-6. `my_diary/.env` のDBの設定を変更。  
-
-7. Access URL (http://localhost)
+5. Access URL (http://localhost)
